@@ -1,0 +1,11 @@
+table_name,row_count,rejected_rows,status
+companies,3,0,SUCCESS
+profitandloss,0,0,PENDING
+balancesheet,0,0,PENDING
+cashflow,0,0,PENDING
+sectors,0,0,PENDING
+stock_prices,0,0,PENDING
+financial_ratios,0,0,PENDING
+analysis,0,0,PENDING
+documents,0,0,PENDING
+peer_groups,0,0,PENDING
