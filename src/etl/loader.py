@@ -1,27 +1,32 @@
+import pandas as pd
 import sqlite3
 
 conn = sqlite3.connect("nifty100.db")
-cursor = conn.cursor()
 
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS companies (
-    company_id INTEGER PRIMARY KEY,
-    company_name TEXT NOT NULL,
-    ticker TEXT UNIQUE
-)
-""")
+df = pd.read_excel("data/companies.xlsx", header=1)
 
-cursor.execute("""
-INSERT OR IGNORE INTO companies
-(company_id, company_name, ticker)
-VALUES
-(1,'Reliance Industries','RELIANCE'),
-(2,'TCS','TCS'),
-(3,'Infosys','INFY')
-""")
+# Purana data delete
+conn.execute("DELETE FROM companies")
+
+# Companies load
+for index, row in df.iterrows():
+    conn.execute(
+        """
+        INSERT INTO companies
+        (company_id, company_name, ticker)
+        VALUES (?, ?, ?)
+        """,
+        (
+            index + 1,
+            row["company_name"],
+            row["id"]
+        )
+    )
 
 conn.commit()
 
-print("Sample Data Loaded Successfully")
+cursor = conn.cursor()
+cursor.execute("SELECT COUNT(*) FROM companies")
+print("Companies Loaded:", cursor.fetchone()[0])
 
 conn.close()

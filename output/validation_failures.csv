@@ -1,1 +1,5 @@
-rule,severity,message
+Rule,Severity,Issue
+DQ-03,CRITICAL,8 companies in financial tables missing from companies master
+DQ-03,CRITICAL,7 companies in balance sheet missing from companies master
+DQ-04,WARNING,Null values found in operating_profit
+DQ-05,WARNING,Null values found in dividend_payout
