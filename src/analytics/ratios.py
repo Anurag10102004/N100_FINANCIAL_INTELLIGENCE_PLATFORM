@@ -63,3 +63,108 @@ def return_on_capital_employed(
     ebit = operating_profit + other_income
 
     return round((ebit / capital) * 100, 2)
+
+def debt_to_equity(borrowings, equity_capital, reserves):
+    """
+    Debt to Equity Ratio
+    """
+    equity = equity_capital + reserves
+
+    if borrowings == 0:
+        return 0
+
+    if equity <= 0:
+        return None
+
+    return round(borrowings / equity, 2)
+
+
+def high_leverage_flag(de_ratio, is_financial=False):
+    """
+    High leverage if D/E > 5 and company is not Financial.
+    """
+    if is_financial:
+        return False
+
+    return de_ratio is not None and de_ratio > 5
+
+
+def interest_coverage_ratio(operating_profit, other_income, interest):
+    """
+    Interest Coverage Ratio
+    """
+    if interest == 0:
+        return None
+
+    ebit = operating_profit + other_income
+    return round(ebit / interest, 2)
+
+
+def icr_label(interest):
+    """
+    Label for debt-free companies.
+    """
+    if interest == 0:
+        return "Debt Free"
+    return None
+
+
+def net_debt(borrowings, investments):
+    """
+    Net Debt
+    """
+    return borrowings - investments
+
+
+def asset_turnover(sales, total_assets):
+    """
+    Asset Turnover Ratio
+    """
+    if total_assets == 0:
+        return None
+
+    return round(sales / total_assets, 2)
+
+def debt_to_equity(borrowings, equity_capital, reserves):
+    equity = equity_capital + reserves
+
+    if borrowings == 0:
+        return 0
+
+    if equity <= 0:
+        return None
+
+    return round(borrowings / equity, 2)
+
+
+def high_leverage_flag(de_ratio, is_financial=False):
+    if is_financial:
+        return False
+
+    return de_ratio is not None and de_ratio > 5
+
+
+def interest_coverage_ratio(operating_profit, other_income, interest):
+    if interest == 0:
+        return None
+
+    ebit = operating_profit + other_income
+    return round(ebit / interest, 2)
+
+
+def icr_label(interest):
+    if interest == 0:
+        return "Debt Free"
+
+    return None
+
+
+def net_debt(borrowings, investments):
+    return borrowings - investments
+
+
+def asset_turnover(sales, total_assets):
+    if total_assets == 0:
+        return None
+
+    return round(sales / total_assets, 2)
