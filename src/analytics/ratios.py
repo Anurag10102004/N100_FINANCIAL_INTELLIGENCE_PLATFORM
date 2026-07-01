@@ -16,6 +16,12 @@ def operating_profit_margin(operating_profit, sales):
     """
     Operating Profit Margin = (Operating Profit / Sales) * 100
     """
+    if operating_profit is None:
+        return None
+
+    if sales is None:
+        return None
+
     if sales == 0:
         return None
     return round((operating_profit / sales) * 100, 2)
@@ -54,6 +60,8 @@ def return_on_capital_employed(
     ROCE = EBIT / Capital Employed * 100
     EBIT = Operating Profit + Other Income
     """
+    if operating_profit is None:
+        return None
 
     capital = equity_capital + reserves + borrowings
 
